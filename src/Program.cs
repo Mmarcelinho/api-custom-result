@@ -1,19 +1,9 @@
-
-using System.Reflection;
-using ElmahCore.Mvc;
-using ElmahCore.Sql;
-using Microsoft.AspNetCore.Http.Features;
-using Microsoft.EntityFrameworkCore;
-using AspNetCore.WebApi.Data;
-using AspNetCore.WebApi.Extensions;
-using AspNetCore.WebApi.Repositories;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddTransient<ILivroRepository,LivroRepository>();
+builder.Services.AddTransient<ILivroRepository, LivroRepository>();
 
 builder.Services.AddDbContext<Context>(x => x.UseInMemoryDatabase("Database"));
 
@@ -54,7 +44,6 @@ if (app.Environment.IsDevelopment())
 
     app.UseElmah();
 }
-
 
 app.UseAuthorization();
 
